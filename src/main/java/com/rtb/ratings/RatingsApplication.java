@@ -8,6 +8,7 @@ public class RatingsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RatingsApplication.class, args);
+		System.out.println("Application started");
 	}
 
 }
