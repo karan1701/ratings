@@ -1,5 +1,8 @@
 package com.rtb.ratings.controller;
 
+import java.text.DecimalFormat;
+import java.util.Random;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,16 +16,15 @@ public class RatingsController {
 
 	Logger logger = LoggerFactory.getLogger(RatingsController.class);
 
-	@GetMapping("/")
-	public String getAllRatings() {
-		logger.info("Returning all the ratings");
-		return "All ratings";
-	}
+	private final DecimalFormat df = new DecimalFormat("0.0");
+	Random rd = new Random();
 
-	@GetMapping("/{productid}")
-	public Object getRatingsForAProduct(@PathVariable(name = "productid") String productId) {
-		logger.info("Returning ratings for the product {}", productId);
-		return "Ratings for the product id: " + productId;
+	@GetMapping("/{reviewid}")
+	public String getRatingsForAReview(@PathVariable(name = "reviewid") Integer reviewid) {
+		String rating = df.format(rd.nextFloat(1, 5));
+		logger.info("Ratings for the review {} is {}", reviewid, rating);
+		return rating;
 
 	}
+
 }
