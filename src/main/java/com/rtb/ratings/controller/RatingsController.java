@@ -21,9 +21,15 @@ public class RatingsController {
 
 	@GetMapping("/{reviewid}")
 	public String getRatingsForAReview(@PathVariable(name = "reviewid") Integer reviewid) {
-		String rating = df.format(rd.nextFloat(1, 5));
+		String rating = df.format(getRandomFloatInRange(1, 5));
 		logger.info("Ratings for the review {} is {}", reviewid, rating);
 		return rating;
+
+	}
+
+	private float getRandomFloatInRange(int min, int max) {
+		float generatedFloat = min + rd.nextFloat() * (max - min);
+		return generatedFloat;
 
 	}
 
