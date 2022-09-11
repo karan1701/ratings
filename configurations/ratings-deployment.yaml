@@ -1,0 +1,22 @@
+apiVersio: apps/v1
+kind: Deployment
+metadata:
+  name: ratings-app
+  labels:
+    app: ratings-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ratings-app
+  template:
+    metadata:
+      labels:
+        app: ratings-app
+      spec:
+        containers:
+          - name: ratings-app
+            image: karan1701/ratings
+            imagePullPolicy: Always
+            ports:
+              - containerPort: 9094
