@@ -1,4 +1,4 @@
-apiVersio: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ratings-app
@@ -13,10 +13,10 @@ spec:
     metadata:
       labels:
         app: ratings-app
-      spec:
-        containers:
-          - name: ratings-app
-            image: karan1701/ratings
-            imagePullPolicy: Always
-            ports:
-              - containerPort: 9094
+    spec:
+      containers:
+        - name: ratings-app
+          image: karan1701/ratings:1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9094
